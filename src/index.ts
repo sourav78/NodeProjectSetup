@@ -8,6 +8,9 @@ import path from 'path'
 import { loggerMessage } from './middleware/logger.middleware.js'
 import { customLoggingHander } from './middleware/customLogger.middleware.js'
 import { corsOption } from './middleware/corsHandler.middleware.js'
+import { initializingRoutes } from './middleware/routesHandler.middleware.js'
+import { errorHandler } from './middleware/errorHandler.middleware.js'
+import { routeNotFound } from './middleware/routeNotFoundHandler.middleware.js'
 
 export const application = express()
 
@@ -33,9 +36,18 @@ export const MAIN = () => {
     application.use(cors(corsOption))
 
     // Stater Message for health check
-    application.use("/", starterMessage)
+    application.get("/", starterMessage)
 
-    application.listen(process.env.PORT, () => {
+    // Initialize all routes
+    initializingRoutes(application)
+
+    // Define routing error handler
+    application.use(routeNotFound)
+
+    // Define error handler
+    application.use(errorHandler)
+
+    application.listen(process.env.PORT || 3000, () => {
         console.log("-----------------------------------------------");
         console.log(`Server is working on : http://localhost:${process.env.PORT}`);
         console.log("-----------------------------------------------");

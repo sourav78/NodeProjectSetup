@@ -42,7 +42,7 @@ export const loggerMessage = morgan(morganFormat, {
         responseTime: parts[3],
         ipAddress: parts[5], // IP at the last position
       };
-      logger.info(JSON.stringify(logObject));
+      logger.info(JSON.stringify({...logObject, timestamp: new Date()}));
     },
   },
 })
