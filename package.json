@@ -1,6 +1,6 @@
 {
   "name": "projectsetup",
-  "version": "0.0.1",
+  "version": "1.1.0",
   "description": "This is the project setup for a node app. In this app we will configure how we configure all the things, routes, databases, orms, other libraries",
   "main": "index.js",
   "type": "module",
@@ -9,7 +9,10 @@
     "start": "node dist/index.js",
     "watch": "tsc -w",
     "dev temp": "nodemon dist/index.js",
-    "dev": "concurrently \"tsc -w\" \"nodemon dist/index.js\""
+    "dev": "concurrently \"tsc -w\" \"nodemon dist/index.js\"",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push"
   },
   "author": "sourav ranjan",
   "license": "ISC",
@@ -18,9 +21,11 @@
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.36.3",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
     "morgan": "^1.10.0",
+    "mysql2": "^3.11.4",
     "winston": "^3.17.0"
   },
   "devDependencies": {
@@ -29,6 +34,7 @@
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.9.0",
     "concurrently": "^9.1.0",
+    "drizzle-kit": "^0.28.1",
     "nodemon": "^3.1.7",
     "typescript": "^5.6.3"
   }
