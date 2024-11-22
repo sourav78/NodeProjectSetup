@@ -5,3 +5,9 @@ export interface userDetailsInterface {
   userName: string,
   password: string
 }
+
+// User details login interface
+export interface userLoginInterface {
+  email: string,
+  password: string
+}

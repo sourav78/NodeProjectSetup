@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { CustomErrorHandler } from "../../../middleware/errorHandler.middleware.js";
-import { validateUserDetails } from "../validators/userDetails.validator.js";
+import { validateLoginDetails, validateUserDetails } from "../validators/userDetails.validator.js";
 import AuthRepository from "../repository/auth.repository.js";
 
 
@@ -38,9 +38,7 @@ export const handleLogin = async (req: Request, res: Response, next: NextFunctio
 
   try {
 
-    if (!email || !password) {
-      throw new CustomErrorHandler(400, "All fields are requierd.")
-    }
+    validateLoginDetails({email, password})
 
     const mainEmail = "hello@gmail.com"
     const mainPassword = "hello"

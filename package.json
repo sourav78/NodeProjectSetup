@@ -12,11 +12,13 @@
     "dev": "concurrently \"tsc -w\" \"nodemon dist/index.js\"",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:push": "drizzle-kit push"
+    "db:push": "drizzle-kit push",
+    "prisma:migrate": "prisma migrate dev"
   },
   "author": "sourav ranjan",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^5.22.0",
     "@types/cookie-parser": "^1.4.7",
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.7",
@@ -27,6 +29,7 @@
     "express": "^4.21.1",
     "morgan": "^1.10.0",
     "mysql2": "^3.11.4",
+    "prisma": "^5.22.0",
     "winston": "^3.17.0"
   },
   "devDependencies": {
